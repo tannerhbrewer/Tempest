@@ -3,18 +3,8 @@
 
 #include "Walnut/Image.h"
 
-class ExampleLayer : public Walnut::Layer
-{
-public:
-	virtual void OnUIRender() override
-	{
-		ImGui::Begin("Test");
-
-		ImGui::Text("Basic Messaging Application");
-
-		ImGui::End();
-	}
-};
+#include "Client.h"
+#include "Server.h"
 
 Walnut::Application* Walnut::CreateApplication(int argc, char** argv)
 {
@@ -22,7 +12,7 @@ Walnut::Application* Walnut::CreateApplication(int argc, char** argv)
 	spec.Name = "Tempest";
 
 	Walnut::Application* app = new Walnut::Application(spec);
-	app->PushLayer<ExampleLayer>();
+	app->PushLayer<Client>();
 	app->SetMenubarCallback([app]()
 	{
 		if (ImGui::BeginMenu("File"))
